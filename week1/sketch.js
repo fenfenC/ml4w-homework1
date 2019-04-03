@@ -1,8 +1,9 @@
 let video;
 let classifier;
 
+
 function setup() {
-  createCanvas(300, 300);
+  createCanvas(windowWidth, 100);
 
   video = createCapture(VIDEO);
 
@@ -20,10 +21,13 @@ function gotResult(err, results) {
     select('#result').html(results[0].className);
     select('#probability').html(results[0].probability);
     classifier.predict(gotResult);
-    if (results[0].className === 'Granny Smith') {
-      background(255, 0, 0);
+    if (results[0].className === 'wooden spoon') {
+      background(255, 215, 0);
+      gif_loadImg = loadImage("blink.gif");
+      gif_createImg = createImg("blink.gif");
     } else {
-      background(0, 255, 0);
+      background(139, 137, 137);
+
     }
   }
 }
